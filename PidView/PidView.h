@@ -18,14 +18,14 @@ typedef struct _gPid {
 	float LastOutSpeed;						//通过速度变化求出位移变化即飞机的实际高度
 
 }MyPid;
-class PIDViews : public QMainWindow
+class PidView : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    PIDViews(QWidget *parent = Q_NULLPTR);
+    PidView(QWidget *parent = Q_NULLPTR);
 	void setViewInterface(QCustomPlot *customPlot);
-	void PIDViewsGraph();
+	void PidViewGraph();
 private:
 	Ui::PidViewClass ui;
 	TitleBar* pTitleBar;

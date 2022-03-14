@@ -1,6 +1,6 @@
-//#include "PIDViews.h"
+//#include "PidView.h"
 #include "stdafx.h"
-PIDViews::PIDViews(QWidget *parent)
+PidView::PidView(QWidget *parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
@@ -120,7 +120,7 @@ PIDViews::PIDViews(QWidget *parent)
 
 	PID_GetDrawPoints();
 }
-void PIDViews::mousePress()
+void PidView::mousePress()
 {
 	int nFor;
 	nFor = GraphSelectedByCheckBox.size() ? GraphSelectedByCheckBox.size() : 1;
@@ -147,7 +147,7 @@ void PIDViews::mousePress()
 		//analysisRect[i]->setRangeDrag(Qt::Horizontal|Qt::Vertical);
 	}
 }
-void PIDViews::mouseWheel()
+void PidView::mouseWheel()
 {
 
 	QSharedPointer<QCPAxisTickerFixed> yTickerFixed[6];//ÕâÃ´¸³Öµ Ò²ÊÇÃ»Ë­ÁË
@@ -177,7 +177,7 @@ void PIDViews::mouseWheel()
 		curveRect[i]->axis(QCPAxis::atLeft)->setTicker(yTickerFixed[i]);
 	}
 }
-void PIDViews::setViewInterface(QCustomPlot* customPlot)
+void PidView::setViewInterface(QCustomPlot* customPlot)
 {
 	customPlot->plotLayout()->clear();// clear default axis rect so we can start from scratch
 	customPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectAxes);//| QCP::iSelectPlottables¿ÉÒÔ½â³ıÍ¼ÀıÑ¡ÔñÏî|»æÍ¼ÇøÊÇ·ñ¿ÉÑ¡  QCP::iSelectAxes |ÖáÊÇ·ñ¿ÉÒÔÑ¡Ôñ  QCP::iRangeDrag|QCP::iRangeZoom |
@@ -285,7 +285,7 @@ void PIDViews::setViewInterface(QCustomPlot* customPlot)
 		curveRect[i] = CurveAxisRect[i];
 	}
 }
-void PIDViews::selectionChanged()                     //µãÑ¡ÇúÏß»òÍ¼Àı
+void PidView::selectionChanged()                     //µãÑ¡ÇúÏß»òÍ¼Àı
 {
 
 	int nFor;
@@ -308,7 +308,7 @@ void PIDViews::selectionChanged()                     //µãÑ¡ÇúÏß»òÍ¼Àı
 		}
 	}
 }
-void PIDViews::contextMenuRequest(QPoint pos)         //Êó±êÓÒ¼ü--Í¼Ïñ¸´Î»
+void PidView::contextMenuRequest(QPoint pos)         //Êó±êÓÒ¼ü--Í¼Ïñ¸´Î»
 {
 	Q_UNUSED(pos);
 	int nFor = GraphSelectedByCheckBox.size() ? GraphSelectedByCheckBox.size() : 1;
@@ -322,7 +322,7 @@ void PIDViews::contextMenuRequest(QPoint pos)         //Êó±êÓÒ¼ü--Í¼Ïñ¸´Î»
 	}
 
 }
-void PIDViews::PIDViewsGraph()
+void PidView::PidViewGraph()
 {
 	for (int i = 0;i < GraphSelectedByCheckBox.size();i++)
 	{
@@ -340,12 +340,12 @@ void PIDViews::PIDViewsGraph()
 	//
 	//emit dataOperationSignal();             //Êı¾İ»æÖÆÍê³É·¢ËÍĞÅºÅ¸ø Êı¾İÏß³Ì ¸üĞÂÊı¾İ
 }
-void PIDViews::ReplotGraphSlot()                           //¶¨Ê±Æ÷Í¼ĞÎË¢ĞÂ
+void PidView::ReplotGraphSlot()                           //¶¨Ê±Æ÷Í¼ĞÎË¢ĞÂ
 {
-	PIDViewsGraph();
+	PidViewGraph();
 	ui.customPlot->replot();
 }
-void PIDViews::RefreshAxisSlot()                      //ÒòÎª¹²ÓÃÒ»¸öºáÖáµÄÔ­Òò ËùÒÔÒªÊµÊ±¸üĞÂ×ø±êÖáĞÅÏ¢
+void PidView::RefreshAxisSlot()                      //ÒòÎª¹²ÓÃÒ»¸öºáÖáµÄÔ­Òò ËùÒÔÒªÊµÊ±¸üĞÂ×ø±êÖáĞÅÏ¢
 {
 
 	int nFor = GraphSelectedByCheckBox.size() ? GraphSelectedByCheckBox.size() : 1;
@@ -370,7 +370,7 @@ void PIDViews::RefreshAxisSlot()                      //ÒòÎª¹²ÓÃÒ»¸öºáÖáµÄÔ­Òò Ë
 		//}
 	}
 }
-void PIDViews::onPushButtonSlot()
+void PidView::onPushButtonSlot()
 {
 	QPushButton* button = qobject_cast<QPushButton*>(sender());
 	if (button == ui.pushButton1)
@@ -402,7 +402,7 @@ void PIDViews::onPushButtonSlot()
 	}
 }
 
-void PIDViews::on_horizontalSliderP_valueChanged(int value)
+void PidView::on_horizontalSliderP_valueChanged(int value)
 {
 	if (!ui.horizontalSlider->underMouse())return;
 	int IntegerPart = (int)ui.doubleSpinBox->text().toFloat();
@@ -413,7 +413,7 @@ void PIDViews::on_horizontalSliderP_valueChanged(int value)
 	}
 
 }
-void PIDViews::on_horizontalSliderI_valueChanged(int value)
+void PidView::on_horizontalSliderI_valueChanged(int value)
 {
 	if (!ui.horizontalSlider_2->underMouse())return;
 	int IntegerPart = (int)ui.doubleSpinBox_2->text().toFloat();
@@ -423,7 +423,7 @@ void PIDViews::on_horizontalSliderI_valueChanged(int value)
 		PID_GetDrawPoints();
 	}
 }
-void PIDViews::on_horizontalSliderD_valueChanged(int value)
+void PidView::on_horizontalSliderD_valueChanged(int value)
 {
 	if (!ui.horizontalSlider_3->underMouse())return;
 	int IntegerPart = (int)ui.doubleSpinBox_3->text().toFloat();
@@ -433,7 +433,7 @@ void PIDViews::on_horizontalSliderD_valueChanged(int value)
 		PID_GetDrawPoints();
 	}
 }
-void PIDViews::onCheckBoxSet(int i)                     //µã»÷CheckBox Êı¾İÅäÖÃÁĞ±í ²úÉúĞÅºÅ¶ÔÓ¦µÄ²Û
+void PidView::onCheckBoxSet(int i)                     //µã»÷CheckBox Êı¾İÅäÖÃÁĞ±í ²úÉúĞÅºÅ¶ÔÓ¦µÄ²Û
 {
 	if (CheckBoxSet.at(i)->isChecked()) {
 		if (GraphSelectedByCheckBox.size() >= 4) {		//×î¶à¿ÉÒÔÍ¬Ê±¹Û²ì4ÖÖ²¨ĞÎ
@@ -472,7 +472,7 @@ void PIDViews::onCheckBoxSet(int i)                     //µã»÷CheckBox Êı¾İÅäÖÃÁ
 
 
 //pid²¿·Ö
-void PIDViews::PID_GetDrawPoints()
+void PidView::PID_GetDrawPoints()
 {
 	int PointsCount = ui.lineEdit_3->text().toInt();	//Ä£ÄâµÄ×ÜµãÊı
 	HorizontalAxisValue.resize(PointsCount);
@@ -511,7 +511,7 @@ void PIDViews::PID_GetDrawPoints()
 	}
 }
 //µÚ¶ş²¿£º³õÊ¼»¯±äÁ¿£¬´úÂëÈçÏÂ£º
-void PIDViews::PID_init(MyPid& VirtualPid)
+void PidView::PID_init(MyPid& VirtualPid)
 {
 	printf("PID_init begin \n");
 	//VirtualPid.SetTargetHeight = 0.0;
@@ -536,7 +536,7 @@ void PIDViews::PID_init(MyPid& VirtualPid)
 }
 //Í³Ò»³õÊ¼»¯±äÁ¿£¬ÓÈÆäÊÇKp, Ki, KdÈı¸ö²ÎÊı£¬µ÷ÊÔ¹ı³Ìµ±ÖĞ£¬¶ÔÓÚÒªÇóµÄ¿ØÖÆĞ§¹û£¬¿ÉÒÔÍ¨¹ıµ÷½ÚÕâÈı¸öÁ¿Ö±½Ó½øĞĞµ÷½Ú¡£
 //µÚÈı²½£º±àĞ´¿ØÖÆËã·¨£¬PIDÊµÏÖ¡£´úÂëÈçÏÂ£º
-float PIDViews::PID_realize(MyPid& VirtualPid)
+float PidView::PID_realize(MyPid& VirtualPid)
 {
 	//VirtualPid.SetTargetHeight = ui.doubleSpinBox_4->value();
 	VirtualPid.err = VirtualPid.SetTargetHeight - VirtualPid.ActualHeight;
