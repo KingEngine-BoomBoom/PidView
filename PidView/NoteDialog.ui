@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>NoteDialog</class>
+ <widget class="QDialog" name="NoteDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>574</width>
+    <height>336</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>NoteDialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog{
+background-color: rgba(40, 40, 40);
+border-radius:1px;
+	border-style:solid;
+	border-width:2px;
+	border-color:rgb(0,128,255);
+}
+QLineEdit{
+	border-radius:4px;
+	border:2px solid rgb(65,65,65);
+	background:rgb(35,35,35);
+	selection-background-color: green;
+	font-size: 13px;
+}
+QLineEdit:enabled {
+	color: rgb(255,255,255);
+}
+QLineEdit:enabled:hover, QLineEdit:enabled:focus {
+	color: rgb(255,255,255);
+}
+QLineEdit:!enabled {
+	color: rgb(155, 155, 155);
+}
+QLineEdit:hover{
+	border: 3px solid rgb(90,90,90);
+}
+QLabel{
+color:rgb(255,255,255);
+font-family:&quot;Microsoft YaHei&quot;;
+
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTextEdit" name="textEdit">
+     <property name="styleSheet">
+      <string notr="true">QTextEdit {
+        border: 1px solid rgb(45, 45, 45);
+        color: rgb(175, 175, 175);
+        background: rgb(57, 58, 60);
+}
+/**********滚动条-垂直**********/
+QScrollBar:vertical {
+        width: 20px;
+        background: transparent;
+        margin-left: 3px;
+        margin-right: 3px;
+}
+QScrollBar::handle:vertical {
+        width: 20px;
+        min-height: 30px;
+        background: rgb(68, 69, 73);
+        margin-top: 15px;
+        margin-bottom: 15px;
+}
+QScrollBar::handle:vertical:hover {
+        background: rgb(80, 80, 80);
+}
+QScrollBar::sub-line:vertical {
+        height: 15px;
+        background: transparent;
+        image: url(:/image/rsources/arrowTop);
+        subcontrol-position: top;
+}
+QScrollBar::add-line:vertical {
+        height: 15px;
+        background: transparent;
+        image: url(:/image/rsources/arrowBottom);
+        subcontrol-position: bottom;
+}
+QScrollBar::sub-line:vertical:hover {
+        background: rgb(68, 69, 73);
+}
+QScrollBar::add-line:vertical:hover {
+        background: rgb(68, 69, 73);
+}
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+        background: transparent;
+}
+
+QScrollBar#verticalScrollBar:vertical {
+        margin-top: 30px;
+}</string>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOn</enum>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#55ff00;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;该模拟实验中，假设执行器输出量是速度V，该速度是飞行器的&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ff0000;&quot;&gt;整体速度&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;，而不是电机的转速。所以当速度V=0时，代表飞行器静止即合力为0，当速度V&amp;lt;0时，代表飞行器向下运动，当速度V&amp;gt;0时，代表飞行器向上运动。传感器的输出量是飞行器的&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ff0000;&quot;&gt;飞行高度&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;，PID控制运算是目标高度与实际高度的差值&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ff0000;&quot;&gt;ΔH&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;。综上&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ff0000;&quot;&gt;V=0&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;飞行器处于静止（稳定）状态是PID控制的最终目标。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#55ff00;&quot;&gt;2.&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;该模拟实验中，目标量是飞行高度&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;H&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;，即飞行器的飞行高度。&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;H&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;t&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;=（V&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;1&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;+V&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;2&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;）*&lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;t&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;/2&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;这是第&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;t&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;时刻的飞行位移，则&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;H=H&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;1&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;+H&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;2&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;+...+H&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;t&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;就是总时间的位移累加（积分），因为H是V的积分所以当V=0时H处于稳定高度。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#55ff00;&quot;&gt;3.&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;该模拟实验中，目标高度&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;H&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;与实际高度&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;H&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;a&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;差值&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;ΔH&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;与飞行器的飞行速度&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;V&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;成比例关系（Kp），即&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;ΔH&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;越小&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;V&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;也应该越小当&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;ΔH=0&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;时飞行器的速度&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;V&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;也应该为&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;0&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;即&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ff0000;&quot;&gt;静止于目标高度&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_4">
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	border-style:none;
+	padding:5px;
+	border-radius:3px;
+	color:#F0F0FF;
+	background:#8080FF;
+}
+QPushButton:hover{
+	color:#FFFFFF;
+	background:#A2A2FF;
+}
+QPushButton:pressed{
+	color:#CECEFF;
+	background:#6464FF;
+}</string>
+       </property>
+       <property name="text">
+        <string>  关    闭   </string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
