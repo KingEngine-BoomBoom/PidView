@@ -9,10 +9,7 @@ RecordCalculateWork::RecordCalculateWork(int Num):unitNum(Num)
 }
 void RecordCalculateWork::recordCalculate()     //数据转换、运算与分析
 {
-	//qDebug() << "entry Thread";
-	//gThreadMutex.lock();
-	//isCalculateFinish = 1;
-	//gThreadMutex.unlock();
+
 }
 void RecordCalculateWork::FindMaxAndMin(double *pArr, int nStart, int nEnd, double &nMax, double &nMin)
 {
