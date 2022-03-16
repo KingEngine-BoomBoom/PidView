@@ -1,4 +1,3 @@
-//#include "PidView.h"
 #include "stdafx.h"
 PidView::PidView(QWidget *parent)
     : QMainWindow(parent)
